@@ -1,0 +1,23 @@
+
+.cat-select{
+    padding-top: 1%;
+    padding-left: 5%;
+}
+
+
+/* .card:hover::before{
+    transform: ;
+} */
+
+
+.card:hover{
+    
+    
+    border: 5px solid cyan;
+    
+    
+}
+
+.main-container{
+    background-color: blanchedalmond;
+}

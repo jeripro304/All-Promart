@@ -1,0 +1,22 @@
+.mb-3{
+    margin: auto;
+    width: 200px;
+}
+.card-container{
+    display: flex;
+    margin:0;
+}
+.card:hover::before{
+    
+    z-index: 2;
+    box-shadow: 0 0 7px rgb(2, 255, 255)  ;
+    filter: blur(3px);
+}
+
+.card:hover{
+    border: 2px solid cyan;
+    z-index: 2;
+    color: rgb(0, 0, 0) ;
+    box-shadow: 0 0 15px  cyan ;
+    z-index: l;
+}

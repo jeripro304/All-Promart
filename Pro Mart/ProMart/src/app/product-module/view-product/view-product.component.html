@@ -1,0 +1,42 @@
+
+  <app-product></app-product>
+<div class="cat-select">
+  <select name="category"  [(ngModel)]="category" >
+    <option value="ALL">ALL</option>
+    <option *ngFor="let c of categorys" value="{{c}}">{{c}}</option>
+  </select>
+</div>
+
+
+
+<div class="bg-container" >
+    <div class="container">
+     
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+        <div class="col " *ngFor="let p of productList|categoryFilter:category" >
+          <div class="card shadow-sm" >
+            
+           <div class="card-body card">
+            
+              <p class="card-text">Product Name: {{p.name}}</p>
+              <p class="card-text">Price: {{p.price}}</p>
+              <p class="card-text">Quantity: {{p.qty}}</p>
+              <p class="card-text">Category: {{p.category}}</p>
+              <p >Description: {{p.desc}}</p>
+              <div  *ngIf="edit && editId==p.pid" >
+                <app-edit-product [product]="p" (changeEdit)="changingEdit($event)"></app-edit-product>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-left btn-sm btn-outline-secondary" (click)="onEdit(p.pid)">EDIT</button>
+                  <button type="button" class="btn btn-right btn-sm btn-outline-secondary btn-danger" (click)="deleteId(p)" >DELETE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+

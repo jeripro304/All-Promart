@@ -1,0 +1,78 @@
+<app-product></app-product>
+<div class="form-container">
+    <h3>Create Product</h3>
+    <form #myform = "ngForm"  (ngSubmit)="dataSubmitted()" >
+        <div class="mb-3">
+          <label for="exampleInputid" class="form-label">Product Id</label>
+          <input type="text" class="form-control" id="pid" aria-describedby="emailHelp" #pid="ngModel" name="pid"  [(ngModel)]="plist.pid" required  [class.is-invalid]="pid.invalid && pid.touched" pattern="^[P].[0-9]+"  > 
+          <div *ngIf="pid.touched" >
+            <div *ngIf="pid.invalid">
+              <small class="text-danger" *ngIf="pid.errors?.['required']">Product Id cannot be empty</small>
+              <small class="text-danger" *ngIf="pid.errors?.['pattern']" >The Pattern should be of P123</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputName" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="pname" #pname="ngModel" name="pname" [(ngModel)]="plist.Pname" required  [class.is-invalid]="pname.invalid && pname.touched" pattern="^[A-za-z]+$" minlength="3">
+          <div *ngIf="pname.touched">
+            <div *ngIf="pname.invalid">
+                <small class="text-danger" *ngIf="pname.errors?.['required']">Name Cannot be empty</small>
+                <small class="text-danger" *ngIf="pname.errors?.['pattern']">Should contain only alphanumeric </small>
+                <small class="text-danger" *ngIf="pname.errors?.['minlength']">Should be a minimum of 3 characters</small>
+            </div>
+         </div>
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDescription" class="form-label">Product Description</label>
+            <input type="text" class="form-control" id="pdesc" #pdesc="ngModel" name="pdesc" [(ngModel)]="plist.Pdesc" required [class.is-invalid]="pdesc.invalid && pdesc.touched">
+            <div *ngIf="pdesc.touched" >
+                <div *ngIf="pdesc.invalid">
+                   
+                    <small class="text-danger" *ngIf="pdesc.errors?.['required']">This field Cannot be empty </small>
+                </div>
+                 </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPrice" class="form-label">Product Price</label>
+            <input type="number" class="form-control" id="exampleInputPrice" #price="ngModel" name="pprice" [(ngModel)]="plist.Pprice" required [class.is-invalid]="price.invalid && price.touched" pattern="^[1-9]\d*$">
+            <div *ngIf="price.touched">
+                <div *ngIf="price.invalid">
+                    <small class="text-danger" *ngIf="price.errors?.['required']">This Field Cannot be empty</small>
+                    <small class="text-danger" *ngIf="price.errors?.['pattern']">Price Value Cannot be 0 </small>
+                </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="formGroupExampleInput3" class="form-label">Product Category  &nbsp; &nbsp; &nbsp;</label>
+            <select name="dept" #category="ngModel" name="category" [(ngModel)]="plist.Category" required   [class.is-invalid]="category.invalid && category.touched">
+                <div *ngIf="category.touched">
+                    <div *ngIf="category.invalid">
+                        <small class="text-danger" *ngIf="category.errors?.['required']"></small>This field is mandatory </div>
+                </div>
+                
+                <option *ngFor="let p of cate" value="{{p}}">{{p}}</option>
+            
+            
+            </select>
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputQuantity" class="form-label">Product Quantity</label>
+            <input type="number" class="form-control" id="exampleInputQuantity" name="qty" #qty="ngModel" required [(ngModel)]="plist.Pqty" [class.is-invalid]="qty.invalid && qty.touched" pattern="^[1-9]\d*$">
+            <div *ngIf="qty.touched">
+                <div *ngIf="qty.invalid">
+                    <small class="text-danger" *ngIf="qty.errors?.['required']">This field cannot be empty</small>
+                    <small class="text-danger" *ngIf="qty.errors?.['pattern']">This field Cannot be 0</small>
+                </div>
+            </div>
+          </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="myform.form.invalid || hasError">Submit</button><button type="reset" class="btn btn-primary">Reset</button>
+      </form>
+      {{myform.value|json}}
+</div>
+
+

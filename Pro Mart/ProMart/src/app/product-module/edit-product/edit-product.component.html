@@ -1,0 +1,40 @@
+
+<form  [formGroup]="productForm" class="row g-3 main-container" novalidate>
+
+    <div class="col-md-6 qty-style" >
+        <label for="inputCity" class="form-label">Price</label>
+        <input type="text" class="form-control" id="inputCity" name="Pprice" placeholder="Enter new price"  formControlName="price" [class.is-invalid]="price.invalid && price.touched && pricezero" (input)="pricecheck(price.value)"  >
+        <div *ngIf="price.touched">
+            <div *ngIf="price.invalid">
+                <small class="text-danger" *ngIf="price.errors?.['required']">Price can't be empty</small>
+                <small class="text-danger" *ngIf="price.errors?.['pattern']">Price should be numeric</small>
+            </div>
+            <small class="text-danger" *ngIf="!pricezero" >Price should be greater than 0</small>
+        </div>
+      </div>
+
+      <div class="col-md-2 qty-style">
+        <label for="inputZip" class="form-label">Quantity</label>
+        <input type="text" class="form-control " id="inputZip" name="Pqty" placeholder="Enter new Quantity" formControlName="qty" [class.is-invalid]="qty.invalid && qty.touched && qtyzero"  (input)="qtycheck(qty.value)">
+        <div *ngIf="qty.touched">
+            <div *ngIf="qty.invalid" >
+                <small class="text-danger" *ngIf="qty.errors?.['required']">Quantity can't be empty</small>
+                <small class="text-danger" *ngIf="qty.errors?.['pattern']">Quantity should be numeric</small>
+            </div>
+            <small class="text-danger" *ngIf="!qtyzero" >Quantity should be greater than 0</small>
+        </div>
+      </div>
+
+
+      <div class="col-12 button-container" style="display: flex;" >
+
+        <div class="add-button" style="margin-right: 3%;">
+            <button  (click)="OnClick()" type="submit" class="btn btn-primary" [disabled]="productForm.invalid || !pricezero ||  !qtyzero" >Edit</button>
+        </div>
+
+        <div class="add-button">
+            <button  (click)="Cancel()" type="submit" class="btn btn-danger btn-primary"  >Cancel</button>
+        </div>
+       
+      </div>
+</form>

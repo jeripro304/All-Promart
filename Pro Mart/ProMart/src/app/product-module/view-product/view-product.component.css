@@ -1,0 +1,43 @@
+
+.card:hover{
+    border: 2px solid cyan;
+}
+
+.container{
+    background-color: rgb(15, 15, 41);
+
+}
+.btn-left{
+    color:black;
+    background-color: rgb(30, 155, 251);
+    
+}
+.bg-container{
+    background-color: rgb(15, 15, 41);
+
+}
+.btn-group{
+    padding: 10px;
+    display: flex;
+}
+.btn-right{
+    color: black;
+    justify-content: flex-end;
+    
+}
+
+
+ .card:hover::before{
+    
+    z-index: 2;
+    box-shadow: 0 0 7px rgb(2, 255, 255)  ;
+    filter: blur(3px);
+}
+
+.card:hover{
+    
+    z-index: 2;
+    color: rgb(0, 0, 0) ;
+    box-shadow: 0 0 15px  cyan ;
+    z-index: l;
+}
